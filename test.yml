@@ -1,0 +1,12 @@
+---
+- name: Credstash secrets test
+  connection: local
+  hosts: localhost
+  gather_facts: false
+  vars:
+  - region: "us-east-1"
+  tasks:
+  - local_action:
+      module: credstash
+      region: "{{region}}"
+  - debug: msg="{{credstash[testkey]}}"
