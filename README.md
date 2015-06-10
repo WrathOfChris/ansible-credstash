@@ -45,3 +45,8 @@ ok: [127.0.0.1] => {
 PLAY RECAP ********************************************************************
 127.0.0.1                  : ok=2    changed=0    unreachable=0    failed=0
 ```
+
+# WARNING
+
+The module import needs credstash to be installed as a module, see PR:
+https://github.com/LuminalOSS/credstash/pull/27
