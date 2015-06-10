@@ -10,16 +10,22 @@ def main():
               version = dict(required=False, default='')
             , table   = dict(required=False, default='credential-store', type='str')
             , region  = dict(required=False, default='us-east-1', type='str')
+            , unsafe  = dict(choices=BOOLEANS, default=False)
             )
         )
     version = module.params.get('version')
     table = module.params.get('table')
     region = module.params.get('region')
+    unsafe = module.params.get('unsafe')
 
     facts = dict()
     facts['changed'] = False
     facts['ansible_facts'] = dict()
     facts['ansible_facts']['credstash'] = dict()
+
+    # prevent verbose from printing secrets
+    if unsafe == False:
+        facts['verbose_override'] = True
 
     output = credstash.getAllSecrets(
 		    version=version,

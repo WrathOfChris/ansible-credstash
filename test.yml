@@ -9,4 +9,5 @@
   - local_action:
       module: credstash
       region: "{{region}}"
-  - debug: msg="{{credstash[testkey]}}"
+      unsafe: true
+  - debug: msg="{{credstash.testkey}}"
